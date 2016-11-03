@@ -19,10 +19,19 @@ export default class Article extends React.Component {
         style={[
           styles.base,
         ]}>
-        <Entity entity={this.props.entity} entityLink={this.props.entityLink} category={this.props.category}/>
-        <Thumb image={this.props.image} link={this.props.link} />
-        <Lead title={this.props.title} link={this.props.link} />
-        <Preview excerpt={this.props.excerpt} link={this.props.link} />
+        <Entity
+          entity={this.props.entity}
+          entityLink={this.props.entityLink}
+          category={this.props.category} />
+        <Thumb
+          image={this.props.image}
+          link={this.props.link} />
+        <Lead
+          title={this.props.title}
+          link={this.props.link} />
+        <Preview
+          excerpt={this.props.excerpt}
+          link={this.props.link} />
         <ReadMore />
       </div>
     );
@@ -33,7 +42,8 @@ export default class Article extends React.Component {
 var styles = {
   base: {
     display: 'inline-block',
-    width: '182px',
+    maxWidth: '182px',
+    minWidth: '168px',
     margin: '8px 4px',
   }
 };
