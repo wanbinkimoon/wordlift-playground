@@ -1,16 +1,13 @@
 import React from 'react';
 
-import Header from './Header';
-import Main from './Main';
-import Footer from './Footer';
+import Navigator from './Navigator';
+
 
 export default class Layout extends React.Component {
   render() {
     return (
     <div>
-      <Header />
-      <Main />
-      <Footer />
+      <Navigator />
     </div>
     );
   }
