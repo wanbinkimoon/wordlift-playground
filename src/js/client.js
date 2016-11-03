@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Radium from 'radium';
+import color from 'color';
 
 import Layout from './components/Layout';
 
