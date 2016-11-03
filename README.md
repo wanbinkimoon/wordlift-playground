@@ -1,10 +1,10 @@
-# Wordlift Playground
+# WordLift Playground
 
 This repo is a playground for frontend components for [WordLift](https://github.com/insideout10/wordlift-plugin), a wordpress plugin
 
 ## Intro
 
-This repo is were **WordLift** tema tests components and enhancements
+This repo is were **WordLift** team tests components and enhancements
 
 ## Usage
 
