@@ -3,7 +3,10 @@ import Radium from 'radium';
 import color from 'color';
 
 import Entity from './Article/Entity';
+import Preview from './Article/Preview';
+import Lead from './Article/Lead';
 import ReadMore from './Article/ReadMore';
+import Thumb from './Article/Thumb';
 
 @Radium
 export default class Article extends React.Component {
@@ -16,18 +19,10 @@ export default class Article extends React.Component {
         style={[
           styles.base,
         ]}>
-        <Entity entity={this.props.entity} category={this.props.category}/>
-        <a href="">
-          <img src="http://www.fillmurray.com/182/120" alt=""/>
-        </a>
-        <a href="">
-          <h5>
-            {this.props.title}
-          </h5>
-        </a>
-        <p>
-          {this.props.excerpt}
-        </p>
+        <Entity entity={this.props.entity} entityLink={this.props.entityLink} category={this.props.category}/>
+        <Thumb image={this.props.image} link={this.props.link} />
+        <Lead title={this.props.title} link={this.props.link} />
+        <Preview excerpt={this.props.excerpt} link={this.props.link} />
         <ReadMore />
       </div>
     );
@@ -39,6 +34,6 @@ var styles = {
   base: {
     display: 'inline-block',
     width: '182px',
-    marginRight: '8px',
+    margin: '8px 4px',
   }
 };

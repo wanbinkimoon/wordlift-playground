@@ -6,7 +6,7 @@ import color from 'color';
 export default class Entity extends React.Component {
   render() {
     return (
-      <a href=""
+      <a href={this.props.entityLink}
         style={[
           styles.base,
           styles[this.props.category]
@@ -29,8 +29,8 @@ var styles = {
     lineHeight: '24px',
     padding: '0 8px',
     //styling the text
-    fontSize: '12px',
-    textDecoration: 'none',
+    fontSize: '14px',
+    textDecoration: 'underline',
     fontFamily: 'Droid Seif',
     //coloring the header
     backgroundColor: 'transparent',
