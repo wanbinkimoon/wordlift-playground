@@ -51,7 +51,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
           <FormattedMessage {...messages.header} />
         </Title>
         <List>
-          <Component href="/navigator">
+          <Component>
             <a href="/navigator">Navigator</a>
           </Component>
         </List>

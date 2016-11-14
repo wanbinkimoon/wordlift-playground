@@ -10,12 +10,12 @@
  */
 
 import React from 'react';
-// import styled from 'styled-components';
+import Navigator from '../../components/Navigator';
 
-export default class Navigator extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export default class NavigatorPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <h1>Navigator</h1>
+      <Navigator />
     );
   }
 }
