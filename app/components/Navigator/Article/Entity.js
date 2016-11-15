@@ -3,7 +3,7 @@ import Radium from 'radium';
 import color from 'color';
 
 @Radium
-export default class Entity extends React.Component {
+export default class Entity extends React.PureComponent {
   render() {
     return (
       <a href={this.props.entityLink}
@@ -17,31 +17,31 @@ export default class Entity extends React.Component {
   }
 }
 
-//styling for the Entity wrap
-var styles = {
+// styling for the Entity wrap
+let styles = {
   base: {
-    //sizeing and positioning the element
+    // sizeing and positioning the element
     maring: '0',
     width: '100%',
     display: 'block',
     boxSizing: 'border-box',
-    //positioning the text
+    // positioning the text
     lineHeight: '24px',
     padding: '0 8px',
-    //styling the text
+    // styling the text
     fontSize: '14px',
     textDecoration: 'underline',
     fontFamily: 'Droid Seif',
-    //coloring the header
+    // coloring the header
     backgroundColor: 'transparent',
     color: '#747474',
   },
-  //this is the styling for a plain header
+  // this is the styling for a plain header
   plain: {
     backgroundColor: '#747474',
     color: '#FFFFFF',
   },
-  //here starts the styling for category colors
+  // here starts the styling for category colors
   what: {
     backgroundColor: '#2E92FF',
     color: '#FFFFFF',

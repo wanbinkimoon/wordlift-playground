@@ -17,10 +17,10 @@ export default class Thumb extends React.Component {
   }
 }
 
-//styling for the Image wrap
-var styles = {
+// styling for the Image wrap
+let styles = {
   base: {
-    //sizeing and positioning the element
+    // sizeing and positioning the element
     maring: '0',
     width: '100%',
     height: '120px',

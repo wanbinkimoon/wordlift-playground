@@ -9,10 +9,7 @@ import ReadMore from './Article/ReadMore';
 import Thumb from './Article/Thumb';
 
 @Radium
-export default class Article extends React.Component {
-  constructor() {
-    super();
-  }
+export default class Article extends React.PureComponent {
   render() {
     return (
       <div
@@ -22,28 +19,32 @@ export default class Article extends React.Component {
         <Entity
           entity={this.props.entity}
           entityLink={this.props.entityLink}
-          category={this.props.category} />
+          category={this.props.category}
+        />
         <Thumb
           image={this.props.image}
-          link={this.props.link} />
+          link={this.props.link}
+        />
         <Lead
           title={this.props.title}
-          link={this.props.link} />
+          link={this.props.link}
+        />
         <Preview
           excerpt={this.props.excerpt}
-          link={this.props.link} />
+          link={this.props.link}
+        />
         <ReadMore />
       </div>
     );
   }
 }
 
-//styling for the Navigator wrap
-var styles = {
+// styling for the Navigator wrap
+let styles = {
   base: {
     display: 'inline-block',
     maxWidth: '182px',
     minWidth: '168px',
     margin: '8px 4px',
-  }
+  },
 };
