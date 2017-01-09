@@ -7,12 +7,14 @@ injectGlobal`
     height: 100%;
     min-height: 100vh;
     width: 100%;
+    background-color: #f5f5f5;
   }
 
   body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     width: 100%;
     min-height: 100vh;
+    background-color: #f5f5f5;
   }
 
   body.fontLoaded {

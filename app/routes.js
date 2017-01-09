@@ -34,11 +34,11 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/navigator',
-      name: 'Navigator Page',
+      path: '/tile',
+      name: 'Tile',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/NavigatorPage'),
+          System.import('containers/Tile'),
         ]);
 
         const renderRoute = loadModule(cb);
