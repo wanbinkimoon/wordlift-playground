@@ -6,7 +6,7 @@ import Switch from '../Switch'
 const SecondaryWrap = styled.div`
 	display: block;
 	position: absolute;
-	left: 0px;
+	left: ${props => props.open ? '0' : '248px'};
 	top: 0;
 	bottom: 0;
 	box-sizing: border-box;
@@ -14,6 +14,7 @@ const SecondaryWrap = styled.div`
 	height: 32px;
 	padding: 8px;
 	color: #626162;
+	transition: left 200ms ease;
 `;
 
 const LinkWrap = styled.div`
@@ -29,7 +30,8 @@ const LinkInd = styled.div`
 	line-height: 16px;
 	font-size: 12px;
 	margin: 0 12px 0 4px;
-
+	trasition: opacity 150ms ease;
+	opacity: ${props => props.link ? '1' : '0.5'};
 	&:after {
 		content: ' ';
 		display: inline-block;
@@ -77,46 +79,23 @@ const QuickEdit = styled.i`
 	}
 `;
 
+export default function(props) {
+	return (
+		<SecondaryWrap open={props.open} >
 
-export default class Secondary extends React.PureComponent {
-	constructor() {
-	  super();
+			<LinkWrap 
+				link={props.link} 
+				onClick={(e) => props.linker(e)} >
 
-	  this.state = {
-	  	linkActivation: true,
-	  };
-	}
-	
-	// Event handler.
-	linkActive(e) {
-		e.stopPropagation();
-		if (this.state.linkActivation === false) {
-			this.setState({
-				linkActivation: true,
-			});
-			console.log('link had been activated');
-		} else if (this.state.linkActivation === true) {
-			this.setState({
-				linkActivation: false,
-			});
-			console.log('link had been deactivated');
-		}
-	}
+				<Switch link={props.link} />
+				<LinkInd link={props.link} > Link </LinkInd>
+			</LinkWrap>
+			
+			<Category>
+				{props.entityCategory}
+			</Category>
 
-	render() {
-		return (
-			<SecondaryWrap>
-				<LinkWrap onClick={(e) => this.linkActive(e)}>
-					<Switch />
-					<LinkInd> Link </LinkInd>
-				</LinkWrap>
-				<Category>
-					{this.props.entityCategory}
-				</Category>
-				<QuickEdit className="fa fa-pencil">
-					
-				</QuickEdit>
-			</SecondaryWrap>
-		);
-	}
+			<QuickEdit className="fa fa-pencil"></QuickEdit>
+		</SecondaryWrap>
+	);
 }

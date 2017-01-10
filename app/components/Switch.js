@@ -7,7 +7,8 @@ const SwitchBg = styled.div`
 	box-sizing: border-box;
 	width: 24px;
 	height: 16px;
-	background: #7ED321;
+	background: ${props => props.link ? '#7ED321' : '#C7C7C7'};
+	transition: background 200ms ease;
 	border-radius: 10px;
 `;
 
@@ -15,19 +16,18 @@ const SwtichBullet = styled.div`
 	display: inline-block;
 	position: absolute;
 	top: 2px;
-	right: 2px
+	left: ${props => props.link ? '10px' : '2px'};
+	transition: left 150ms ease;
 	width: 12px;
 	height: 12px;
 	background: #FFFFFF;
 	border-radius: 50%;
 `;
 
-export default class Switch extends React.PureComponent {
-	render() {
-		return (
-			<SwitchBg>
-					<SwtichBullet></SwtichBullet>
-			</SwitchBg>
-		);
-	}
+export default function(props) {
+	return (
+		<SwitchBg link={props.link}>
+				<SwtichBullet link={props.link}></SwtichBullet>
+		</SwitchBg>
+	);
 }

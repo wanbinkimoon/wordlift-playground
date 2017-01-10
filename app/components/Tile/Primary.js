@@ -4,12 +4,13 @@ import styled from 'styled-components';
 const PrimaryWrap = styled.div`
 	display: block;
 	position: absolute;
-	left: -248px;
+	left: ${props => props.open ? '-248px' : '0'};
 	top: 0;
 	bottom: 0;
 	box-sizing: border-box;
 	width: 248px;
 	height: 32px;
+	transition: left 200ms ease;
 `;
 
 const Occurrences = styled.div`
@@ -26,8 +27,8 @@ const Occurrences = styled.div`
 	color: #FFFFFF;
 	letter-spacing: -0.21px;
 	line-height: 12px;
-
-	background-color: #2E92FF;
+	user-select: none;
+	background-color: ${props => props.selection ? '#2E92FF' : '#c7c7c7'};
 `;
 
 const Entity = styled.div`
@@ -39,7 +40,8 @@ const Entity = styled.div`
 	line-height: 32px;
 	font-weight: 600;
 	font-size: 12px;
-	color: #2E92FF;
+	user-select: none;
+	color: ${props => props.selection ? '#2E92FF' : '#c7c7c7'};
 `;
 
 const Cloud = styled.i`
@@ -50,20 +52,29 @@ const Cloud = styled.i`
 	font-size: 14px;
 	line-height: 1;
 	color: #CBCBCB;
+	user-select: none;
+	transition: opacity 150ms ease;
+	opacity: ${props => props.selection ? '1' : '0'}
 `;
 
-export default class Primary extends React.PureComponent {
-	render() {
-		return (
-			<PrimaryWrap>
-				<Occurrences>
-					{this.props.occurrencesNumb}
-				</Occurrences>
-				<Entity>
-					{this.props.entityName}
-				</Entity>
-				<Cloud className="fa fa-cloud"></Cloud>
-			</PrimaryWrap>
-		);
-	}
+export default function(props) {
+	const isSelected = props.selection;
+	return (
+		<PrimaryWrap 
+			open={props.open} >
+			<Occurrences
+				selection={props.selection}>
+					{isSelected ? props.occurrencesNumb : '+'}
+			</Occurrences>
+
+			<Entity
+				selection={props.selection}>
+				{props.entityName}
+			</Entity>
+			<Cloud 
+				selection={props.selection}
+				className="fa fa-cloud">		
+			</Cloud>
+		</PrimaryWrap>
+	);
 }

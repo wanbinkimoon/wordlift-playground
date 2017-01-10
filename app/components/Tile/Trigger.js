@@ -22,46 +22,20 @@ const Arrow = styled.div`
   border-bottom: 8px solid transparent;
   border-left: 8px solid #7D7D7D;
 	border-radius: 16px;
-	trasform: rotate(0);
+	transition: transform 150ms ease;
+	transform: rotate( ${props => props.open ? '180deg' : '0deg'} );
 	&:hover {
 		border-left-color: #FCCD34;
 	}
 `;
 
-export default class Tile extends React.PureComponent {
-	constructor() {
-	  super();
-	  this.state = {
-	  	panelOpen: false,
-	  	arrowRotation: '0deg',
-	  };
-	}
-	
-	// Event Handler
-	panelOpen() {
-		// Arrow rotate.
-		if (this.state.panelOpen === false) {
-			this.setState({
-				panelOpen: true,
-				arrowRotation: '180deg',
-			});
-		} else if (this.state.panelOpen === true) {
-			this.setState({
-				panelOpen: false,
-				arrowRotation: '0deg',
-			});
-		}
-
-		// Event logger.
-		console.log(this.state.panelOpen);
-		console.log(this.state.arrowRotation);
-	}
-
-  render() {
-    return (
-      <TriggerWrap>
-      	<Arrow onClick={() => this.panelOpen()} />
-      </TriggerWrap>
-    );
-  }
+export default function(props) {
+  return (
+    <TriggerWrap>
+    	<Arrow 
+    		open={props.open}
+    		onClick={(e) => props.opener(e)} 
+    	/>
+    </TriggerWrap>
+  );
 }
