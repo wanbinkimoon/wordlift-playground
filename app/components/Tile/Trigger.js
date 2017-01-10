@@ -36,6 +36,7 @@ export default class Tile extends React.PureComponent {
 	  	arrowRotation: '0deg',
 	  };
 	}
+	
 	// Event Handler
 	panelOpen() {
 		// Arrow rotate.

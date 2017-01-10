@@ -7,34 +7,57 @@ import Secondary from './Tile/Secondary';
 import Trigger from './Tile/Trigger';
 
 const TileWrap = styled.div`
-  display: block;
-  position: relative;
-  box-sizing: border-box;
-  overflow: hidden;
-  border-radius: 2px;
-  margin: 8px auto;
-  width: 248px;
-  height: 32px;
-  font-family: OpenSans;
-  background-color: #F8F8F8;
+	display: block;
+	position: relative;
+	box-sizing: border-box;
+	overflow: hidden;
+	border-radius: 2px;
+	margin: 8px auto;
+	width: 248px;
+	height: 32px;
+	font-family: OpenSans;
+	background-color: #f5f5f5;
+	box-shadow: 0 4px 4px -3px rgba(0,0,0,.25), 0 8px 8px -6px rgba(0,0,0,.25);
 `;
 
 export default class Tile extends React.PureComponent {
-  render() {
-    return (
-      <TileWrap>
+	
+	constructor() {
+	  super();
+	  this.state = {
+	  	entitySelection: false,
+	  };
+	}
 
-        <Primary 
-        	occurrencesNumb="95"
-        	entityName="Senato della Repubblica"
-        />
-        
-        <Secondary 
+	// Event handler.
+	entitySelect() {
+		if (this.state.entitySelection === false) {
+			this.setState({
+				entitySelection: true,
+			});
+				console.log('entity has been selected');
+		} else if (this.state.entitySelection === true) {
+			this.setState({
+				entitySelection: false,
+			});
+			console.log('entity has been unselected');
+		}
+	}
+	
+	render() {
+		return (
+			<TileWrap onClick={() => this.entitySelect()}>
+				<Primary 
+					occurrencesNumb="95"
+					entityName="Senato della Repubblica"
+				/>
+				
+				<Secondary 
 					entityCategory="Creative Work"
-        />
-        <Trigger />
-      </TileWrap>
-    );
-  }
+				/>
+				<Trigger />
+			</TileWrap>
+		);
+	}
 }
 
