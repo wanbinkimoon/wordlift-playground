@@ -23,11 +23,10 @@ const TileWrap = styled.div`
 `;
 
 export default function(props) {
+	const isOpen = props.open;
 	return (
-		<TileWrap 
-			selection={props.selection}
-			onClick={(e) => props.select(e)}
-			>
+		<TileWrap selection={props.selection} open={props.open} onClick={(e) => props.select(e)} >
+			
 			<Primary 
 				occurrencesNumb={props.occurrencesNumb}
 				entityName={props.entityName}

@@ -54,7 +54,9 @@ export default class HomePage extends React.Component {
   // Selection handler.
   select(e) {
     e.stopPropagation();
-    this.setState({selection: !this.state.selection});
+    if (this.state.open === false ) {
+      this.setState({selection: !this.state.selection});
+    }
   }
 
   render() {
