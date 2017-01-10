@@ -18,64 +18,37 @@ const TileWrap = styled.div`
 	font-family: OpenSans;
 	background-color: #f5f5f5;
 	box-shadow: 0 4px 4px -3px rgba(0,0,0,.25), 0 8px 8px -6px rgba(0,0,0,.25);
+	trasition: all 150ms ease-out;
+	${props => props.selection ? '&:hover{transform: scale(1)}' : '&:hover{transform: scale(1.01)}'};
 `;
 
-export default class Tile extends React.Component {
-	constructor() {
-	  super();
-	  this.state = {
-			selection: false,
-			open: false,
-			link: true,
-	  };
-	}
+export default function(props) {
+	return (
+		<TileWrap 
+			selection={props.selection}
+			onClick={(e) => props.select(e)}
+			>
+			<Primary 
+				occurrencesNumb={props.occurrencesNumb}
+				entityName={props.entityName}
+				open={props.open}
+				selection={props.selection}
+			/>
 
-	// Opener Handler
-	opener(e) {
-		e.stopPropagation();
-		this.setState({open: !this.state.open});
-	}
+			<Secondary 
+				entityCategory={props.entityCategory}
+				open={props.open}
+				link={props.link}
+				linker={(e) => props.linker(e)}
+			/>
+			
+			<Trigger 
+				selection={props.selection}
+				open={props.open} 
+				opener={(e) => props.opener(e)} 
+			/>
 
-		// Event handler.
-	linker(e) {
-		e.stopPropagation();
-		this.setState({link: !this.state.link});
-	}
-
-	// Event handler.
-	select(e) {
-		e.stopPropagation();
-		this.setState({selection: !this.state.selection});
-		console.log(this.state.selection);
-	}
-	
-	render() {
-		return (
-			<TileWrap 
-				onClick={(e) => this.select(e)}
-				>
-				
-				<Primary 
-					occurrencesNumb="95"
-					entityName="Senato della Repubblica"
-					open={this.state.open}
-					selection={this.state.selection}
-				/>
-				
-				<Secondary 
-					entityCategory="Creative Work"
-					open={this.state.open}
-					link={this.state.link}
-					linker={(e) => this.linker(e)}
-				/>
-				
-				<Trigger 
-					open={this.state.open} 
-					opener={(e) => this.opener(e)} 
-				/>
-
-			</TileWrap>
-		);
-	}
+		</TileWrap>
+	);
 }
 

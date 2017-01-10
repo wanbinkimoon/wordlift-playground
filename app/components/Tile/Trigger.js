@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TriggerWrap = styled.div`
-  display: block;
+  display: ${props => props.selection ? 'block' : 'none'};
+	transition: opacity 150ms ease;
+	opacity: ${props => props.selection ? '1' : '0'}
   position: absolute;
   right: 0;
   top: 0;
@@ -31,7 +33,8 @@ const Arrow = styled.div`
 
 export default function(props) {
   return (
-    <TriggerWrap>
+    <TriggerWrap
+    	selection={props.selection}>
     	<Arrow 
     		open={props.open}
     		onClick={(e) => props.opener(e)} 

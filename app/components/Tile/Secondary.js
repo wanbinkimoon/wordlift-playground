@@ -87,15 +87,20 @@ export default function(props) {
 				link={props.link} 
 				onClick={(e) => props.linker(e)} >
 
-				<Switch link={props.link} />
-				<LinkInd link={props.link} > Link </LinkInd>
+				<Switch 
+					link={props.link} />
+					
+				<LinkInd 
+					link={props.link} > Link </LinkInd>
+
 			</LinkWrap>
 			
 			<Category>
 				{props.entityCategory}
 			</Category>
 
-			<QuickEdit className="fa fa-pencil"></QuickEdit>
+			<QuickEdit 
+				className="fa fa-pencil"></QuickEdit>
 		</SecondaryWrap>
 	);
 }

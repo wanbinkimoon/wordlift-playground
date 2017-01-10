@@ -29,12 +29,49 @@ const Main = styled.section`
   background-color: #FFF;
 `;
 
-export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export default class HomePage extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      selection: false,
+      open: false,
+      link: true,
+    };
+  }
+
+  // Opener Handler
+  opener(e) {
+    e.stopPropagation();
+    this.setState({open: !this.state.open});
+  }
+
+  // Link handler.
+  linker(e) {
+    e.stopPropagation();
+    this.setState({link: !this.state.link});
+  }
+
+  // Selection handler.
+  select(e) {
+    e.stopPropagation();
+    this.setState({selection: !this.state.selection});
+  }
+
   render() {
     return (
       <Main>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-        <Tile />
+        <Tile
+            occurrencesNumb = {messages.occurrences.defaultMessage}
+            entityName = {messages.entity.defaultMessage}
+            entityCategory = {messages.category.defaultMessage}
+            selection = {this.state.selection}
+            open = {this.state.open}
+            link = {this.state.link}
+            opener = {(e) => this.opener(e)} 
+            linker = {(e) => this.linker(e)} 
+            select = {(e) => this.select(e)} 
+          />
       </Main>
     );
   }

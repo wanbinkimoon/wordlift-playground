@@ -1,13 +1,16 @@
-/*
- * HomePage Messages
- *
- * This contains all the text for the HomePage component.
- */
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  header: {
-    id: 'app.components.HomePage.header',
-    defaultMessage: 'Wordlift Frontend Components',
+  occurrences: {
+    id: 'app.components.tile.occurrances',
+    defaultMessage: '95',
+  },
+  entity: {
+    id: 'app.components.tile.entity',
+    defaultMessage: 'Orso Verde',
+  },
+  category: {
+    id: 'app.components.tile.entity',
+    defaultMessage: 'Oggetti sulla scrivania',
   },
 });
