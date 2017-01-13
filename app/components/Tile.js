@@ -23,27 +23,29 @@ const TileWrap = styled.div`
 `;
 
 export default function(props) {
-	const isOpen = props.open;
 	return (
-		<TileWrap selection={props.selection} open={props.open} onClick={(e) => props.select(e)} >
-			
+		<TileWrap 
+			selection={props.tile.isSelected} 
+			open={props.tile.isOpen} 
+			onClick={(e) => props.select(e)} >
+
 			<Primary 
-				occurrencesNumb={props.occurrencesNumb}
-				entityName={props.entityName}
-				open={props.open}
-				selection={props.selection}
+				occurrencesNumb={props.tile.occurrences}
+				entityName={props.tile.entity}
+				open={props.tile.isOpen}
+				selection={props.tile.isSelected}
 			/>
 
 			<Secondary 
-				entityCategory={props.entityCategory}
-				open={props.open}
-				link={props.link}
+				entityCategory={props.tile.category}
+				open={props.tile.isOpen}
+				link={props.tile.isLinked}
 				linker={(e) => props.linker(e)}
 			/>
 			
 			<Trigger 
-				selection={props.selection}
-				open={props.open} 
+				selection={props.tile.isSelected}
+				open={props.tile.isOpen} 
 				opener={(e) => props.opener(e)} 
 			/>
 

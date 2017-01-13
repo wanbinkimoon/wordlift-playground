@@ -35,7 +35,7 @@ export default function createRoutes(store) {
       },
     }, {
       path: '/tile',
-      name: 'Tile',
+      name: 'TilePage',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           System.import('containers/Tile'),

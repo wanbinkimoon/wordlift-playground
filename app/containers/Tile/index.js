@@ -11,7 +11,6 @@
 
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import messages from './messages';
 import styled from 'styled-components';
 
 import Tile from '../../components/Tile';
@@ -29,51 +28,75 @@ const Main = styled.section`
   background-color: #FFF;
 `;
 
-export default class HomePage extends React.Component {
+// Define props and state 
+const tiles = [{
+  occurrences: 10,
+  entity: 'Orso Verde',
+  category: 'Oggetto sulla scrivania',
+  isOpen: false,
+  isSelected: false,
+  isLinked: false
+  },{
+  occurrences: 13,
+  entity: 'Orso Giallo',
+  category: 'Oggetto sulla scrivania',
+  isOpen: false,
+  isSelected: false,
+  isLinked: false
+  }, {
+  occurrences: 34,
+  entity: 'Orso Blu',
+  category: 'Oggetto sulla scrivania',
+  isOpen: false,
+  isSelected: false,
+  isLinked: false
+  }];
+
+
+export default class TileComp extends React.Component {
   constructor() {
     super();
     this.state = {
-      selection: false,
-      open: false,
-      link: true,
+      tiles: tiles,
     };
   }
 
-  // Opener Handler
-  opener(e) {
+  // Selection handler.
+  select(e, i) {
     e.stopPropagation();
-    this.setState({open: !this.state.open});
+    if (!this.state.tiles[i].isOpen) {
+      this.state.tiles[i].isSelected = !this.state.tiles[i].isSelected;
+      this.setState({tiles: tiles});
+    }
+  }
+
+  // Opener Handler
+  opener(e, i) {
+    e.stopPropagation();
+    this.state.tiles[i].isOpen = !this.state.tiles[i].isOpen;
+    this.setState({tiles: tiles});
   }
 
   // Link handler.
-  linker(e) {
+  linker(e, i) {
     e.stopPropagation();
-    this.setState({link: !this.state.link});
-  }
-
-  // Selection handler.
-  select(e) {
-    e.stopPropagation();
-    if (!this.state.open) {
-      this.setState({selection: !this.state.selection});
-    }
+    this.state.tiles[i].isLinked = !this.state.tiles[i].isLinked;
+    this.setState({tiles: tiles});
   }
 
   render() {
     return (
       <Main>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-        <Tile
-            occurrencesNumb = {messages.occurrences.defaultMessage}
-            entityName = {messages.entity.defaultMessage}
-            entityCategory = {messages.category.defaultMessage}
-            selection = {this.state.selection}
-            open = {this.state.open}
-            link = {this.state.link}
-            opener = {(e) => this.opener(e)} 
-            linker = {(e) => this.linker(e)} 
-            select = {(e) => this.select(e)} 
-          />
+         {this.state.tiles.map(
+          (tile ,i) => 
+            <Tile 
+              key={i}
+              tile={tile} 
+              select = {(e) => this.select(e, i)} 
+              opener = {(e) => this.opener(e, i)} 
+              linker = {(e) => this.linker(e, i)} />
+          )}
       </Main>
     );
   }

@@ -12,5 +12,5 @@ export default defineMessages({
   category: {
     id: 'app.components.tile.entity',
     defaultMessage: 'Oggetti sulla scrivania',
-  },
+  }
 });

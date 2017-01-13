@@ -34,10 +34,11 @@ const Arrow = styled.div`
 export default function(props) {
   return (
     <TriggerWrap
-    	selection={props.selection}>
+    	selection={props.selection}
+      open={props.open}
+      onClick={(e) => props.opener(e)} >
     	<Arrow 
     		open={props.open}
-    		onClick={(e) => props.opener(e)} 
     	/>
     </TriggerWrap>
   );
