@@ -6,8 +6,7 @@ const SwitchBg = styled.div`
 	position: relative;
 	box-sizing: border-box;
 	width: 24px;
-	height: 16px;
-	background: ${props => props.link ? '#7ED321' : '#C7C7C7'};
+	height: 16px 	background: ${props => props.link ? '#7ED321' : '#C7C7C7'};
 	transition: background 200ms ease;
 	border-radius: 10px;
 `;
